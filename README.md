@@ -15,12 +15,16 @@ From the repo root:
 
 ```bash
 cd backend
+cp .env.example .env
+# Edit .env and set WORLD_WEATHER_ONLINE_API_KEY (from your World Weather Online account).
 bundle install
 bin/rails db:create db:migrate
 bin/rails server
 ```
 
 The API listens on **port 3000** by default (`http://localhost:3000`).
+
+`dotenv-rails` loads variables from `backend/.env` in development and test. In production, set `WORLD_WEATHER_ONLINE_API_KEY` in the host environment (or your platform’s secret manager).
 
 Production database password can be set with `WEATHER_BACKEND_DATABASE_PASSWORD` (see `config/database.yml`).
 
@@ -51,4 +55,4 @@ PORT=3001 npm start
 
 ## Secrets
 
-Do not commit API keys or database passwords. Use a local `.env` (ignored by git) or your deployment platform’s secret storage.
+The weather API key is read from `WORLD_WEATHER_ONLINE_API_KEY` (see `backend/.env.example`). Do not commit `.env` or database passwords; use your deployment platform’s secret storage in production.
