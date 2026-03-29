@@ -1,0 +1,2 @@
+class Twoday < ApplicationRecord
+end
